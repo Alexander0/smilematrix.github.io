@@ -9,6 +9,38 @@
   gtag('js', new Date());
   gtag('config', 'G-CKD3STC8RV');
 </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(function() {
+    $("#contactForm").on("submit", function(e) {
+        e.preventDefault(); // prevent full form submit
+
+        $.ajax({
+            url: "https://formsubmit.co/ajax/85d5ae1476a3603286a55588f4ba6fb2",
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function() {
+                $("#formStatus")
+                    .removeClass("text-danger")
+                    .addClass("text-success")
+                    .text("Message sent successfully!")
+                    .fadeIn();
+
+                $("#contactForm")[0].reset();
+            },
+            error: function() {
+                $("#formStatus")
+                    .removeClass("text-success")
+                    .addClass("text-danger")
+                    .text("Error sending message. Please try again.")
+                    .fadeIn();
+            }
+        });
+    });
+});
+</script>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -88,6 +120,7 @@
   <div class="modal-dialog">
     <div class="modal-content p-3">
       <h5 class="mb-2" id="contactModalLabel">Send a Message</h5>
+     <!--
       <form action="https://formsubmit.co/85d5ae1476a3603286a55588f4ba6fb2" method="POST">
         <!-- FormSubmit options -->
         <input type="hidden" name="_captcha" value="false">
@@ -103,6 +136,24 @@
 
         <button type="submit" class="btn btn-primary w-100 mt-1">Send</button>
       </form>
+      -->
+<form id="contactForm">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <input class="form-control my-2" name="name" placeholder="Name" required>
+    <input class="form-control my-2" type="email" name="email" placeholder="Email" required>
+     <input class="form-control my-2" type="phone" name="phone" placeholder="Phone #">
+    <textarea class="form-control my-2" rows="3" name="message" placeholder="Message" required></textarea>
+
+    <button type="submit" class="btn btn-primary w-100 mt-1">Send</button>
+
+    <div id="formStatus" class="small text-center mt-2 text-success" style="display:none;">
+        Message sent!
+    </div>
+</form>
+
+      
     </div>
   </div>
 </div>
