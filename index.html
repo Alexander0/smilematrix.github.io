@@ -7,14 +7,14 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-CKD3STC8RV');
 </script>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SmileMatrix AI</title>
 
-  <!-- Bootstrap 5 -->
+  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
@@ -83,61 +83,96 @@
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1 class="hero-title">SmileMatrix AI</h1>
-    <p class="hero-subtitle">Automatic AI-based dental design for next-generation dentistry.</p>
-    <a href="#contact" class="btn btn-primary btn-brand">Contact Us</a>
-    <p class="mt-3 text-muted small">
-      Our team consists of top DDS dentists and leading AI & optimization experts.
-    </p>
-  </section>
+<!-- CONTACT MODAL -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <h5 class="mb-2" id="contactModalLabel">Send a Message</h5>
+      <form action="https://formsubmit.co/smilematrixai@gmail.com" method="POST">
+        <!-- FormSubmit options -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <!-- optional: redirect after submit -->
+        <!-- <input type="hidden" name="_next" value="https://smilematrix.ai/thank-you.html"> -->
 
-  <!-- FEATURES -->
-  <div class="container">
-    <div class="row g-3">
-      <div class="col-12 col-md-4">
-        <div class="feature-box">
-          <div>🦷</div>
-          <div class="feature-title">AI Dental Design</div>
-          <div class="feature-text">Fully automated crowns, veneers, bridges, and restorations.</div>
-        </div>
+        <input class="form-control my-2" name="name" placeholder="Name" required>
+        <input class="form-control my-2" type="email" name="email" placeholder="Email" required>
+        <input class="form-control my-2" type="phone" name="phone" placeholder="Phone #">
+        <textarea class="form-control my-2" rows="5" name="message" placeholder="Message" required></textarea>
+
+        <button type="submit" class="btn btn-primary w-100 mt-1">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 class="hero-title">SmileMatrix AI</h1>
+  <p class="hero-subtitle">Automatic AI-based dental design for next-generation dentistry.</p>
+
+  <!-- Button that opens the modal -->
+  <button
+    type="button"
+    class="btn btn-primary btn-brand"
+    data-bs-toggle="modal"
+    data-bs-target="#contactModal">
+    Contact Us
+  </button>
+
+  <p class="mt-3 text-muted small">
+    Our team consists of top DDS dentists and leading AI &amp; optimization experts.
+  </p>
+</section>
+
+<!-- FEATURES -->
+<div class="container">
+  <div class="row g-3">
+    <div class="col-12 col-md-4">
+      <div class="feature-box">
+        <div>🦷</div>
+        <div class="feature-title">AI Dental Design</div>
+        <div class="feature-text">Fully automated crowns, veneers, bridges, and restorations.</div>
       </div>
+    </div>
 
-      <div class="col-12 col-md-4">
-        <div class="feature-box">
-          <div>⚡</div>
-          <div class="feature-title">Fast & Efficient</div>
-          <div class="feature-text">Designs generated in seconds, not hours.</div>
-        </div>
+    <div class="col-12 col-md-4">
+      <div class="feature-box">
+        <div>⚡</div>
+        <div class="feature-title">Fast &amp; Efficient</div>
+        <div class="feature-text">Designs generated in seconds, not hours.</div>
       </div>
+    </div>
 
-      <div class="col-12 col-md-4">
-        <div class="feature-box">
-          <div>📐</div>
-          <div class="feature-title">Precision Quality</div>
-          <div class="feature-text">Consistent, accurate, and clinically aligned output.</div>
-        </div>
+    <div class="col-12 col-md-4">
+      <div class="feature-box">
+        <div>📐</div>
+        <div class="feature-title">Precision Quality</div>
+        <div class="feature-text">Consistent, accurate, and clinically aligned output.</div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="container mt-4">
-    <div class="text-center">
-      <a href="mailto:smilematrixai@gmail.com" class="btn btn-outline-primary btn-brand">
-        Email: smilematrixai@gmail.com
-      </a>
-    </div>
-  </section>
+<!-- CONTACT SECTION (fallback mailto) -->
+<section id="contact" class="container mt-4">
+  <div class="text-center">
+    <a href="mailto:smilematrixai@gmail.com" class="btn btn-outline-primary btn-brand">
+      Email: smilematrixai@gmail.com
+    </a>
+  </div>
+</section>
 
-  <footer class="mt-4">
-    © <span id="year"></span> SmileMatrix AI · smilematrix.ai
-  </footer>
+<footer class="mt-4">
+  © <span id="year"></span> SmileMatrix AI · smilematrix.ai
+</footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<!-- Bootstrap 5 JS (needed for modal) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
