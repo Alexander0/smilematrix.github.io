@@ -10,7 +10,7 @@
   gtag('config', 'G-CKD3STC8RV');
 </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<!--
 <script>
 $(function() {
     $("#contactForm").on("submit", function(e) {
@@ -41,7 +41,57 @@ $(function() {
     });
 });
 </script>
+-->
+<script>
+$(function() {
+    $("#contactForm").on("submit", function(e) {
+        e.preventDefault(); // prevent full form submit
 
+        var $form   = $(this);
+        var $button = $form.find('button[type="submit"]');
+        var $status = $("#formStatus");
+
+        // Reset status + set loading state
+        $status.hide().text("");
+        $button.prop("disabled", true)
+               .addClass("disabled")
+               .data("original-text", $button.text())
+               .text("Sending...");
+
+        $.ajax({
+            url: "https://formsubmit.co/ajax/85d5ae1476a3603286a55588f4ba6fb2",
+            method: "POST",
+            data: $form.serialize(),
+            dataType: "json",
+            success: function() {
+                $status
+                    .removeClass("text-danger")
+                    .addClass("text-success")
+                    .text("Message sent successfully!")
+                    .fadeIn();
+
+                $form[0].reset();
+            },
+            error: function() {
+                $status
+                    .removeClass("text-success")
+                    .addClass("text-danger")
+                    .text("Error sending message. Please try again.")
+                    .fadeIn();
+            },
+            complete: function() {
+                // Restore button state
+                var originalText = $button.data("original-text") || "Send";
+                $button.prop("disabled", false)
+                       .removeClass("disabled")
+                       .text(originalText);
+            }
+        });
+    });
+});
+</script>
+
+  
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SmileMatrix AI</title>
